@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecturer Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-4">
+<div class="max-w-3xl mx-auto">
+    <!-- Header -->
+    <div class="bg-white rounded-lg shadow p-6 mb-1">
+        <h1 class="text-2xl text-center font-bold text-gray-900 mb-1">Welcome <span th:text="${name}"></span></h1>
+
+        <!-- Success badge -->
+        <div class="bg-green-50 border border-green-200 rounded p-3 mb-6">
+            <p class="text-green-800 text-sm">
+                You have Lecturer role access.
+            </p>
+        </div>
+
+        <h2 class="font-bold text-gray-900 mb-2 mt-2">What you can do:</h2>
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+            <li>View students report</li>
+            <li>Manage student assignments and work</li>
+            <li>Access student-only data</li>
+            <li>Post student grades</li>
+        </ul>
+
+
+        <div class="flex gap-3 mt-6">
+            <a
+                    class="flex-1 bg-indigo-600 text-white text-center py-2 rounded hover:bg-indigo-700"
+                    th:href="@{/home}">
+                Home
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

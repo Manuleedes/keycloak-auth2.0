@@ -16,4 +16,17 @@ public class HomeController {
         model.addAttribute("roles", principal.getAuthorities());
         return "home";
     }
+    @GetMapping("/student")
+    public String student(){
+        return "student";
+    }
+    @GetMapping("/lecturer")
+    public String lecturer(){
+        return "lecturer";
+    }
+    @GetMapping("/dean")
+    public String dean(){
+        return "dean";
+    }
+
 }
