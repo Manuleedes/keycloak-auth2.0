@@ -1,5 +1,6 @@
 package com.lidigu.auth_20.config;
 
+import com.lidigu.auth_20.service.CustomOidcUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +18,8 @@ public class SecurityConfig {
 
      @Autowired
     private final ClientRegistrationRepository clientRegistrationRepository;
+     @Autowired
+     private final CustomOidcUserService oidcUserService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
@@ -28,12 +31,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/error").permitAll()
                         .requestMatchers("/student").hasRole("STUDENT")
-                        .requestMatchers("lecturer").hasRole("LECTURER")
+                        .requestMatchers("/lecturer").hasRole("LECTURER")
                         .requestMatchers("/dean").hasRole("DEAN")
                         .anyRequest().authenticated())
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login")
                         .defaultSuccessUrl("/home", true)
+                        .userInfoEndpoint(
+                                userInfo -> userInfo
+                                        .oidcUserService(oidcUserService)
+                        )
                 )
                 .logout(logout -> logout
                         .logoutSuccessHandler(handler))

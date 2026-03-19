@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
     @GetMapping("/home")
-    public String home(@AuthenticationPrincipal OidcUser principal, Model model){
+    public String home(@AuthenticationPrincipal OidcUser principal,
+                      // @RegisteredOAuth2AuthorizedClient("keycloak") OAuth2AuthorizedClient authClient,
+                       Model model){
         model.addAttribute( "username", principal.getPreferredUsername());
         model.addAttribute( "email", principal.getEmail());
         model.addAttribute("name", principal.getFullName());
         model.addAttribute("roles", principal.getAuthorities());
+        //System.out.println(authClient.getAccessToken().getTokenValue());
+
         return "home";
     }
     @GetMapping("/student")
