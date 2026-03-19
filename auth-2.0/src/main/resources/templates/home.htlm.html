@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-4">
+<div class="max-w-3xl mx-auto">
+    <!-- Header -->
+    <div class="bg-white rounded-lg shadow p-6 mb-1">
+        <h1 class="text-2xl text-center font-bold text-gray-900 mb-1">Welcome <span th:text="${name}"></span></h1>
+
+        <table class="w-full table-auto border-collapse text-sm">
+            <tr>
+                <th class="border-b text-left border-gray-100 p-4 font-medium">Username</th>
+                <td class="border-b text-left border-gray-100 p-4 text-gray-500" th:text="${username}"></td>
+            </tr>
+
+            <tr>
+                <th class="border-b text-left border-gray-100 p-4 font-medium">Email</th>
+                <td class="border-b text-left border-gray-100 p-4 text-gray-500" th:text="${email}"></td>
+            </tr>
+
+            <tr>
+                <th class="border-b text-left border-gray-100 p-4 font-medium">Roles</th>
+                <td class="border-b text-left border-gray-100 p-4 text-gray-500" th:text="${roles}"></td>
+            </tr>
+        </table>
+
+        <a sec:authorize="hasRole('USER')"
+           th:href="@{/user}"
+           class="mt-6 block bg-gray-50 border border-gray-200 rounded p-3 hover:bg-gray-100 hover:border-gray-400 transition">
+            <div class="font-semibold text-gray-900">User Dashboard</div>
+            <div class="text-sm text-gray-600">Only User Access</div>
+        </a>
+
+        <a sec:authorize="hasRole('MANAGER')"
+           th:href="@{/manager}"
+           class="mt-2 block bg-blue-50 border border-blue-200 rounded p-3 hover:bg-blue-100 hover:border-blue-400 transition">
+            <div class="font-semibold text-gray-900">Manager Dashboard</div>
+            <div class="text-sm text-gray-600">Only Manager Access</div>
+        </a>
+
+        <a sec:authorize="hasRole('ADMIN')"
+           th:href="@{/admin}"
+           class="mt-2 mb-2 block bg-red-50 border border-red-200 rounded p-3 hover:bg-red-100 hover:border-red-400 transition">
+            <div class="font-semibold text-gray-900">Admin Dashboard</div>
+            <div class="text-sm text-gray-600">Only Admin Access</div>
+        </a>
+
+        <form th:action="@{/logout}" method="post" class="mt-1">
+            <button class="w-full bg-red-600 text-white py-3 rounded font-medium hover:bg-red-700" type="submit">
+                Logout
+            </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

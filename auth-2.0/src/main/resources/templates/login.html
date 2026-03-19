@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+<div class="w-full max-w-sm">
+    <!-- Heading -->
+    <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-900">Baraton Icumpus</h1>
+        <p class="text-gray-500 text-sm mt-1">Sign in to continue</p>
+    </div>
+    <!-- Login Button -->
+    <a class="block w-full bg-indigo-600 text-white text-center py-3 rounded font-medium hover:bg-indigo-700"
+       href="/oauth2/authorization/keycloak">Sign in with Keycloak</a>
+    <p class="mt-4 text-xs text-center text-gray-500">You will be redirected to Keycloak to authenticate</p>
+
+</div>
+</body>
+</html>
