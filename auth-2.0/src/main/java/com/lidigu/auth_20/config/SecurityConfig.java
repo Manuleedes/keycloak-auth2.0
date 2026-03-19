@@ -27,6 +27,9 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/error").permitAll()
+                        .requestMatchers("/student").hasRole("STUDENT")
+                        .requestMatchers("lecturer").hasRole("LECTURER")
+                        .requestMatchers("/dean").hasRole("DEAN")
                         .anyRequest().authenticated())
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login")
