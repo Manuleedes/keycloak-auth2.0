@@ -31,25 +31,25 @@
             </tr>
         </table>
 
-        <a sec:authorize="hasRole('USER')"
-           th:href="@{/user}"
+        <a sec:authorize="hasRole('STUDENT')"
+           th:href="@{/student}"
            class="mt-6 block bg-gray-50 border border-gray-200 rounded p-3 hover:bg-gray-100 hover:border-gray-400 transition">
-            <div class="font-semibold text-gray-900">User Dashboard</div>
-            <div class="text-sm text-gray-600">Only User Access</div>
+            <div class="font-semibold text-gray-900">Student Dashboard</div>
+            <div class="text-sm text-gray-600">Only Student Access</div>
         </a>
 
-        <a sec:authorize="hasRole('MANAGER')"
-           th:href="@{/manager}"
+        <a sec:authorize="hasRole('LECTURER')"
+           th:href="@{/lecturer}"
            class="mt-2 block bg-blue-50 border border-blue-200 rounded p-3 hover:bg-blue-100 hover:border-blue-400 transition">
-            <div class="font-semibold text-gray-900">Manager Dashboard</div>
-            <div class="text-sm text-gray-600">Only Manager Access</div>
+            <div class="font-semibold text-gray-900">Lecturer Dashboard</div>
+            <div class="text-sm text-gray-600">Only Lecturers Access</div>
         </a>
 
-        <a sec:authorize="hasRole('ADMIN')"
-           th:href="@{/admin}"
+        <a sec:authorize="hasRole('DEAN')"
+           th:href="@{/dean}"
            class="mt-2 mb-2 block bg-red-50 border border-red-200 rounded p-3 hover:bg-red-100 hover:border-red-400 transition">
-            <div class="font-semibold text-gray-900">Admin Dashboard</div>
-            <div class="text-sm text-gray-600">Only Admin Access</div>
+            <div class="font-semibold text-gray-900">Deans Dashboard</div>
+            <div class="text-sm text-gray-600">Only Deans Access</div>
         </a>
 
         <form th:action="@{/logout}" method="post" class="mt-1">
